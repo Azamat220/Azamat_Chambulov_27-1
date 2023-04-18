@@ -1,0 +1,15 @@
+{% extends 'layouts/index.html' %}
+
+{% block content %}
+    <div class="post_block">
+            <div class="info">
+                <h1>{{ post.title }}</h1>
+                <h4>{{ post.composition }}</h4>
+                <h5>Rate: {{ post.rate }}</h5>
+                <div class="dates">
+                    <h5>Created Date: {{ post.created_data }}</h5>
+                    <h5>Modified Date: {{ post.modified_data }}</h5>
+                </div>
+            </div>
+    </div>
+{% endblock %}
