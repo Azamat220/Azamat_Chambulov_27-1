@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path
 
 from internet_shop import settings
-from products.views import main_page_view, posts_view, post_detial_view
+from products.views import (main_page_view, posts_view,
+                            post_detial_view, post_create_view)
 from django.conf.urls.static import static
 
 
@@ -26,7 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_page_view),
     path('products/', posts_view),
-    path('products/<int:id>/', post_detial_view)
+    path('products/<int:id>/', post_detial_view),
+    path('products/create/', post_create_view)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
