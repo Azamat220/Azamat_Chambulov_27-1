@@ -41,12 +41,17 @@
                 <h5>Modified Date: {{ product.modified_data }}</h5>
             </div>
         </div>
-        <p class="reviews_title">Reviews</p>
-        <form action="/products/{{ product.id }}/" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Add Review">
-        </form>
+
+        {% if not user.is_anonymous %}
+            <div class="create_review">
+                <form action="/products/{{ product.id }}/" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Add Review">
+                </form>
+            </div>
+        {% endif %}
+
         <div class="reviews">
             {% for review in reviews %}
                 <div class="review_block">

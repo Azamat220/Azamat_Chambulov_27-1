@@ -13,7 +13,8 @@ def posts_view(request):
         products = Product.objects.all()
 
         context = {
-            'products': products
+            'products': products,
+            'user': request.user
         }
         return render(request, 'products/products.html', context=context)
 
@@ -25,7 +26,8 @@ def post_detial_view(request, id):
         context = {
             'product': product,
             'reviews': product.review_set.all(),
-            'form': ReviewCreateForm
+            'form': ReviewCreateForm,
+            'user': request.user
         }
         return render(request, 'products/detail.html', context=context)
 
