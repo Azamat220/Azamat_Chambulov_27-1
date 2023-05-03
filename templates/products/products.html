@@ -1,18 +1,33 @@
 {% extends 'layouts/index.html' %}
 
 {% block content %}
+    <div class="search">
+        <form action="/products/" method="get">
+            <input type="text" name="search">
+            <input type="submit" value="search">
+        </form>
+    </div>
     <div style="display: flex; justify-content: space-between; flex-wrap: wrap">
         {% for product  in products %}
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <div class="img">
-                        <img style="width: 100%; height: 200px"  src="/media/{{ product.image }}" alt="ooops">
+                        <img style="width: 100%; height: 200px" src="/media/{{ product.image }}" alt="ooops">
                     </div>
                     <h5 class="card-title">{{ product.title }}</h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary">Rate: {{ product.rate }}</h6>
                     <a href="/products/{{ product.id }}" class="card-link">More</a>
                 </div>
             </div>
+        {% endfor %}
+    </div>
+    <div class="pages">
+        {% for page in pages %}
+            <a href="/products/?page={{ page }}">
+                <button>
+                    {{ page }}
+                </button>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}
